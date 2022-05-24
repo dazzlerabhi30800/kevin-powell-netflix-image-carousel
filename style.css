@@ -1,0 +1,142 @@
+* {
+  margin: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: system-ui;
+  font-size: 1.25rem;
+  color: white;
+  background: #121212;
+  overflow-x : hidden;
+}
+
+img,
+svg {
+  max-width: 100%;
+  display: block;
+}
+
+/* general styling */
+
+.container {
+  inline-size: min(100% - 4rem, 70rem);
+  margin-inline: auto;
+}
+
+.flow {
+  display: grid;
+  gap: var(--flow-spacer, 1rem);
+}
+
+.page-header {
+  padding-block: 5rem;
+  margin-block-end: 5rem;
+  background-image: url("https://images.unsplash.com/photo-1641353989082-9b15fa661805?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTY0MzM5ODcyOA&ixlib=rb-1.2.1&q=80&w=1200"),
+    linear-gradient(-25deg, rgb(0 0 0 / 0), rgb(0 0 0 / 1) 50%);
+  background-size: cover;
+  background-blend-mode: multiply;
+  color: white;
+}
+
+.page-title {
+  font-size: 4rem;
+  margin: 0;
+}
+
+.section-title {
+  margin-block: 4rem 1rem;
+}
+
+/* Media Scroller  */
+
+.media-container {
+  position: relative;
+}
+
+.media-scroller,
+.media-group {
+    display: grid;
+    grid-auto-flow: column;
+    scroll-behavior: smooth;
+  }
+  
+  .media-scroller {
+    grid-auto-columns: 100%;
+    overflow-x: hidden;
+}
+
+.media-group {
+    border: 3px solid limegreen;
+    gap: .25rem;
+    grid-auto-columns: 1fr;
+}
+
+.media-element {
+    border-radius: .25rem;
+    overflow: hidden;
+}
+
+.media-element > img {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+
+.previous,
+.next {
+  display: none;
+  position: absolute;
+  z-index: 10;
+  padding : 10px 10px;
+  background : rgba(5, 5, 5, 0.486);
+  text-decoration: none;
+  color : rgb(255, 255, 255);
+  opacity: 0;
+  transition: all 300ms ease-in-out;
+}
+
+.previous {
+  left: 0;
+  top: 0;
+}
+
+.next {
+  right: 0;
+  top: 0;
+}
+
+.media-scroller:hover :where(.next, .previous) {
+  opacity : 1;
+}
+
+:where(.next, .previous):hover {
+  background : black;
+}
+
+:where(.next, .previous) > i {
+  transform : scale(1);
+  transition: transform 300ms linear;
+}
+:where(.next, .previous) > i:hover {
+  transform: scale(1.2);
+}
+
+.media-group:target {
+  border: 3px solid red;
+}
+
+.media-group:target :where(.next,.previous) {
+  display: block;
+}
+
+
+
+
+
